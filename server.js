@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const bodyParser = require("body-parser");
-const Article = require("./models");
+const Article = require("./models"); // make sure this exports Mongoose model
 const articleRoutes = require("./articleRoutes");
 
 const app = express();
@@ -14,8 +14,18 @@ mongoose.connect("mongodb://127.0.0.1:27017/beyondchats")
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.error("MongoDB connection error:", err));
 
-// Use API routes
+// Use API routes (all routes under /api/articles)
 app.use("/api/articles", articleRoutes);
+
+// Optional: Add a simple GET route for testing directly
+app.get("/articles", async (req, res) => {
+    try {
+        const articles = await Article.find();
+        res.json(articles);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
 
 // Scrape 5 oldest articles (page 15 + page 14)
 async function scrapeArticles() {
@@ -63,4 +73,4 @@ scrapeArticles();
 
 // Start server
 const PORT = 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
