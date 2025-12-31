@@ -1,0 +1,58 @@
+.article-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.article-card h2 {
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.article-section {
+  margin-bottom: 12px;
+}
+
+.article-section h4 {
+  margin-bottom: 6px;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.updated {
+  background: #f3f8ff;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.references {
+  margin-top: 10px;
+}
+
+.references ul {
+  padding-left: 20px;
+  margin: 4px 0;
+}
+
+.references li {
+  margin-bottom: 4px;
+}
+
+.references li a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.references li a:hover {
+  text-decoration: underline;
+}
